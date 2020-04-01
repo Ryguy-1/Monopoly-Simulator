@@ -14,6 +14,9 @@ public class Simulate {
 	int lapsAround;
 	ArrayList<String> cycledChance;
 	ArrayList<String> cycledCommunityChest;
+	int doubleCounter = 0;
+	int numRolled = 0;
+	Random r = new Random();
 	
 	Simulate(Square[] squares, int players, int numDice, int numsPerDice, String[] chanceCards, String[] communityChestCards, int movesTotal, int lapsAround){
 		this.squares=squares;
@@ -49,15 +52,13 @@ public class Simulate {
 	//	System.out.println("started running");
 		while(hasCycled == false) {
 			
-			Random r = new Random();
+			
 			//goes through each player and lets them roll and calculates consequences
 			for (int i = 0; i < playersArray.length; i++) {
 				
 				//rolls dice and sets default space
-				int numRolled = 0;
-				for (int j = 0; j < numDice; j++) {
-					numRolled = numRolled + 1 + r.nextInt(numsPerDice);
-				}
+				
+				roll();
 				if(playersArray[i].getSpaceOn()+numRolled>=40) {
 					//System.out.println("Player" + i + "Rolled a " + numRolled);
 					int temp = 40-playersArray[i].spaceOn;
@@ -66,6 +67,7 @@ public class Simulate {
 					movesTotal+=1;
 					playersArray[i].addCycle();
 					numRolled = 0;
+					
 					//System.out.println("Moved GO");
 				}else {
 					playersArray[i].addSpaces(numRolled);
@@ -76,7 +78,7 @@ public class Simulate {
 					numRolled = 0;
 				}
 				
-				
+		//Checks ALL CONSEQUENCES		
 				if(squares[playersArray[i].getSpaceOn()].getName().contains("Go To Prison")) {
 					playersArray[i].setSpaceOn(9);
 					squares[9].addLanded();
@@ -178,6 +180,17 @@ public class Simulate {
 			
 			
 		}
+	}
+	
+	
+	public void roll() {
+		for (int j = 0; j < numDice; j++) {
+			numRolled = numRolled + 1 + r.nextInt(numsPerDice);
+		}
+	}
+	
+	public void checkConsequences() {
+		
 	}
 	
 

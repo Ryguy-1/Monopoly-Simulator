@@ -20,9 +20,9 @@ public class Runner {
 	 String[] communityChestCards = {"Null", "Null", "Null", "Null", "Null", "Advance To GO", "Null", "Null", "Null", "Null", "Go To Jail", "Null", "Null", "Null", "Null", "Null"};
 	Square[] squares = new Square[namesOfSpaces.length];
 	Simulate[] simulations = new Simulate[NUMBEROFSIMULATIONS];
-	public final int PLAYERS = 4;
+	public final int PLAYERS = 5;
 	public final int NUMDICE = 2;
-	public final int LAPSAROUND = 15;
+	public final int LAPSAROUND = 6;
 	public int movesTotal = 0;
 	public int MOVESTOTALCALC = 0;
 public static void main(String[] args) {

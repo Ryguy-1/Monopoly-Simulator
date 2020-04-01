@@ -1,40 +1,40 @@
-Mediterranean Avenue : 0.1600%
-Community Chest : 3.1300%
-Baltic Avenue : 2.6500%
-Income Tax : 2.2300%
-Reading Railroad : 2.7700%
-Oriental Avenue : 1.3900%
-Chance : 2.6100%
-Vermont Avenue : 2.6700%
-Connecticut Avenue : 2.5400%
-Jail : 6.2100%
-St. Charles Place : 2.9200%
-Electric Company : 2.3800%
-States Avenue : 2.4300%
-Virginia Avenue : 2.4900%
-Pennsylvania Railroad : 2.8200%
-St.James Place : 3.0000%
-Community Chest : 3.0100%
-Tennessee Avenue : 2.9800%
-New York Avenue : 2.9600%
-Free Parking : 2.9100%
-Kentucky Avenue : 2.8400%
+Mediterranean Avenue : 0.1700%
+Community Chest : 2.9900%
+Baltic Avenue : 2.5800%
+Income Tax : 2.2100%
+Reading Railroad : 2.8000%
+Oriental Avenue : 1.5000%
+Chance : 2.7200%
+Vermont Avenue : 2.8400%
+Connecticut Avenue : 2.6700%
+Jail : 6.2600%
+St. Charles Place : 3.0000%
+Electric Company : 2.4500%
+States Avenue : 2.4700%
+Virginia Avenue : 2.5100%
+Pennsylvania Railroad : 2.8600%
+St.James Place : 3.0400%
+Community Chest : 3.0300%
+Tennessee Avenue : 3.0100%
+New York Avenue : 2.9700%
+Free Parking : 2.9200%
+Kentucky Avenue : 2.8500%
 Chance : 2.7900%
-Indiana Avenue : 2.7400%
+Indiana Avenue : 2.7300%
 Illinois Avenue : 3.2100%
-B.& O. Railroad : 2.9100%
-Atlantic Avenue : 2.7300%
-Ventnor Avenue : 2.7000%
-Water Works : 2.8300%
-Marvin Gardens : 2.6000%
-Go To Prison : 2.7900%
-Pacific Avenue : 2.6700%
-North Carolina Avenue : 2.6100%
-Community Chest : 2.5500%
-Pennsylvania Avenue : 2.4900%
-Short Line Railroad : 2.4200%
-Chance : 2.3000%
-Park Place : 2.1800%
-Luxary Tax : 2.1700%
-Boardwalk : 2.6400%
-GO : 3.1600%
+B.& O. Railroad : 2.8900%
+Atlantic Avenue : 2.7100%
+Ventnor Avenue : 2.6800%
+Water Works : 2.8000%
+Marvin Gardens : 2.5700%
+Go To Prison : 2.7400%
+Pacific Avenue : 2.6300%
+North Carolina Avenue : 2.5600%
+Community Chest : 2.5000%
+Pennsylvania Avenue : 2.4300%
+Short Line Railroad : 2.3600%
+Chance : 2.2400%
+Park Place : 2.1100%
+Luxary Tax : 2.1000%
+Boardwalk : 2.5800%
+GO : 3.0800%
