@@ -20,5 +20,8 @@ public class Player {
 	public void addCycle() {
 		cycles+=1;
 	}
+	public void setCycles(int setter) {
+		cycles = setter;
+	}
 	
 }

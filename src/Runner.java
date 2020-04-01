@@ -1,6 +1,11 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 
 public class Runner {
+	
+	public final int NUMBEROFSIMULATIONS = 1000000;
+	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
 			"Oriental Avenue", "Chance", "Vermont Avenue", "Connecticut Avenue", "Jail", "St. Charles Place", 
@@ -14,34 +19,64 @@ public class Runner {
 			 "Go To Reading Railroad", "Go To Boardwalk", "Null", "Null", "Null"};
 	 String[] communityChestCards = {"Null", "Null", "Null", "Null", "Null", "Advance To GO", "Null", "Null", "Null", "Null", "Go To Jail", "Null", "Null", "Null", "Null", "Null"};
 	Square[] squares = new Square[namesOfSpaces.length];
-	public final int PLAYERS = 5;
+	Simulate[] simulations = new Simulate[NUMBEROFSIMULATIONS];
+	public final int PLAYERS = 4;
 	public final int NUMDICE = 2;
-	public final int LAPSAROUND = 30;
+	public final int LAPSAROUND = 15;
 	public int movesTotal = 0;
+	public int MOVESTOTALCALC = 0;
 public static void main(String[] args) {
 	
 	Runner r = new Runner();
-	System.out.println(r.namesOfSpaces.length);
+	//System.out.println(r.namesOfSpaces.length);
 	//initializes each space with its name, number of times landed (0 so far), and place on board (Mediterranean = 0, GO = 39)
 	for (int i = 0; i < r.namesOfSpaces.length; i++) {
 		r.squares[i] = new Square(r.namesOfSpaces[i], 0, i);
 	}
-	System.out.println(r.squares[39].getName());
-	System.out.println(r.squares[39].getPlaceOnBoard());
-	System.out.println("tried to run");
-	Simulate simulate1 = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
-	
-	simulate1.runSimulation();
-	
-	Square[] returnedArray = simulate1.getSquareArray();
-	int returnedMovesTotal = simulate1.getMovesTotal();
-	
-	BigDecimal percent = truncateDecimal((double)returnedArray[37].getTimesLanded()/(double)returnedMovesTotal, 4);
-	
-	  BigDecimal realPercent = percent.multiply(new BigDecimal(100));
+//	System.out.println(r.squares[39].getName());
+//	System.out.println(r.squares[39].getPlaceOnBoard());
+//	System.out.println("tried to run");
 	
 	
-	System.out.println("The spot "+ returnedArray[37].getName() + " was landed on " + returnedArray[37].getTimesLanded() + " times for a probability of " + realPercent + "% of the time");
+//	
+
+//	int[][][] percentsTotalAll = new int[r.simulations.length][r.squares.length][r.simulations.length];
+	int simulationsRun = 0;
+	
+	BigDecimal[] averagedPercents = new BigDecimal[r.squares.length];
+	int[] movesTotal = new int[r.simulations.length];
+	int[] timesPerSquareTotal = new int[r.squares.length];
+	Square[][] arrayOfSquareArrays = new Square[r.simulations.length][r.squares.length];
+	
+	//RUNS ALL SIMULATIONS
+	for (int i = 0; i < r.simulations.length; i++) {
+		System.out.println("Running Simulation " + simulationsRun);
+		r.simulations[i] = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
+		r.simulations[i].runSimulation();
+		
+		r.MOVESTOTALCALC += r.simulations[i].getMovesTotal();
+		//arrayOfSquareArrays[i] = r.simulations[i].getSquareArray();
+		
+		simulationsRun++;
+	}
+
+	for (int i = 0; i < r.squares.length; i++) {
+		averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4).multiply(new BigDecimal(100));
+	}
+	String endString = "";
+	for (int i = 0; i < r.squares.length; i++) {
+		endString+=r.squares[i].getName() + " : " + averagedPercents[i] + "%\n";
+	}
+	try {
+		FileWriter fw = new FileWriter("src/results.txt");
+		fw.write(endString);
+		
+		fw.close();
+	} 	catch (IOException e) {
+		e.printStackTrace();
+	}
+	
+	
 	
 	
 }
@@ -56,3 +91,104 @@ private static BigDecimal truncateDecimal(double x,int numberofDecimals)
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//FORBIDDEN CODE
+
+
+
+//System.out.println(arrayOfSquareArrays[0].length);
+//System.out.println(arrayOfSquareArrays.length);
+
+//sets timesPerSquareTotal each value to how many times landed on throughout all simulations.
+//for (int i = 0; i < arrayOfSquareArrays.length; i++) {
+//	for (int j = 0; j < arrayOfSquareArrays[i].length; j++) {
+//		timesPerSquareTotal[i] = timesPerSquareTotal[i] + arrayOfSquareArrays[i][j].getTimesLanded();
+//		System.out.println(arrayOfSquareArrays[i][j].getTimesLanded());
+//	}
+//}
+//
+//System.out.println(timesPerSquareTotal[4]);
+//
+//changes all to percents
+
+
+
+	//may work still in progress
+//	Square[] squaresReturned = r.simulations[i].getSquareArray();
+//	int[] numbersLandedInOrder = new int[r.squares.length];
+//	BigDecimal[] percents = new BigDecimal[r.squares.length];
+//	for (int j = 0; j < squaresReturned.length; j++) {
+//		numbersLandedInOrder[j] = squaresReturned[j].getTimesLanded();
+//	}
+//	
+//	//1 round of percents
+//	for (int j = 0; j < percents.length; j++) {
+//		percents[j] = truncateDecimal((double)squaresReturned[j].getTimesLanded()/(double)r.simulations[i].getMovesTotal(), 4).multiply(new BigDecimal(100));
+//	}
+//	
+//	
+//}
+
+//FILE WRITING
+
+//try {
+//	FileWriter fw = new FileWriter("src/results.txt", true);
+//	fw.write(r.squares[j].getName() + " : " + percents[j]);
+//		
+//	fw.close();
+//} catch (IOException e) {
+//	e.printStackTrace();
+//}
+//
+
+
+//TEST SIMULATION BELOW TO CHECK A SINGLE ONE
+
+//Simulate simulate1 = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
+//
+//simulate1.runSimulation();
+//
+//Square[] returnedArray = simulate1.getSquareArray();
+//int returnedMovesTotal = simulate1.getMovesTotal();
+//
+//BigDecimal percent = truncateDecimal((double)returnedArray[37].getTimesLanded()/(double)returnedMovesTotal, 4);
+//
+//  BigDecimal realPercent = percent.multiply(new BigDecimal(100));
+//
+//
+//System.out.println("The spot "+ returnedArray[37].getName() + " was landed on " + returnedArray[37].getTimesLanded() + " times for a probability of " + realPercent + "% of the time");
+//
+
+
+

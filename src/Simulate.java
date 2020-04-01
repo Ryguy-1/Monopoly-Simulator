@@ -39,14 +39,14 @@ public class Simulate {
 		for (int i = 0; i < communityChestCards.length; i++) {
 			cycledCommunityChest.add(communityChestCards[i]);
 		}
-		System.out.println(cycledChance.size());
-		System.out.println(cycledCommunityChest.size());
+		//System.out.println(cycledChance.size());
+		//System.out.println(cycledCommunityChest.size());
 		
 		for (int i = 0; i < players; i++) {
 			playersArray[i] = new Player();
-			System.out.println("array of players initialized");
+			//System.out.println("array of players initialized");
 		}
-		System.out.println("started running");
+	//	System.out.println("started running");
 		while(hasCycled == false) {
 			
 			Random r = new Random();
@@ -59,20 +59,20 @@ public class Simulate {
 					numRolled = numRolled + 1 + r.nextInt(numsPerDice);
 				}
 				if(playersArray[i].getSpaceOn()+numRolled>=40) {
-					System.out.println("Player" + i + "Rolled a " + numRolled);
+					//System.out.println("Player" + i + "Rolled a " + numRolled);
 					int temp = 40-playersArray[i].spaceOn;
 					playersArray[i].setSpaceOn(temp);
 					squares[playersArray[i].getSpaceOn()].addLanded();
 					movesTotal+=1;
 					playersArray[i].addCycle();
 					numRolled = 0;
-					System.out.println("Moved GO");
+					//System.out.println("Moved GO");
 				}else {
 					playersArray[i].addSpaces(numRolled);
 					squares[playersArray[i].getSpaceOn()].addLanded();
 					movesTotal+=1;
-					System.out.println("Player" + i + "Rolled a " + numRolled);
-					System.out.println("Moved not GO");
+					//System.out.println("Player" + i + "Rolled a " + numRolled);
+					//System.out.println("Moved not GO");
 					numRolled = 0;
 				}
 				
@@ -80,7 +80,7 @@ public class Simulate {
 				if(squares[playersArray[i].getSpaceOn()].getName().contains("Go To Prison")) {
 					playersArray[i].setSpaceOn(9);
 					squares[9].addLanded();
-					System.out.println("went to jail");
+					//System.out.println("went to jail");
 				}
 				
 				
@@ -90,7 +90,7 @@ public class Simulate {
 					int chanceInt = r.nextInt(cycledChance.size());
 					String chanceChoice = cycledChance.get(chanceInt);
 					cycledChance.remove(chanceInt);
-					System.out.println("Removed "+ chanceChoice + " now cycledChance is " + cycledChance.size() + " large");
+					//System.out.println("Removed "+ chanceChoice + " now cycledChance is " + cycledChance.size() + " large");
 					if(cycledChance.size() == 0) {
 						for (int z = 0; z < chanceCards.length; z++) {
 							cycledChance.add(chanceCards[z]);
@@ -102,12 +102,12 @@ public class Simulate {
 							if(squares[j2].getName()=="Electric Company" || squares[j2].getName()=="Water Works") {
 								playersArray[i].setSpaceOn(j2);
 								squares[j2].addLanded();
-								System.out.println("sent to nearest nearest utility by chance");
+								//System.out.println("sent to nearest nearest utility by chance");
 								break;
 							}else if(j2==squares.length-1) {
 								//space 11 is the electric company
 								playersArray[i].setSpaceOn(11);
-								System.out.println("sent to nearest nearest utility by chance");
+								//System.out.println("sent to nearest nearest utility by chance");
 							}
 						}
 					
@@ -116,12 +116,12 @@ public class Simulate {
 							if(squares[j2].getName()=="Reading Railroad" || squares[j2].getName()=="Pennsylvania Railroad" || squares[j2].getName()=="B.& O. Railroad" || squares[j2].getName()=="Short Line Railroad") {
 								playersArray[i].setSpaceOn(j2);
 								squares[j2].addLanded();
-								System.out.println("Sent to "+ squares[j2].getName() + " with chance");
+								//System.out.println("Sent to "+ squares[j2].getName() + " with chance");
 								break;
 							}else if(j2==squares.length-1) {
 								//space 11 is the electric company
 								playersArray[i].setSpaceOn(4);
-								System.out.println("Sent to Reading Railroad with Chance");
+								//System.out.println("Sent to Reading Railroad with Chance");
 							}
 						}
 						
@@ -134,7 +134,7 @@ public class Simulate {
 						if(chanceChoice.contains(squares[j].getName())) {
 							playersArray[i].setSpaceOn(j);
 							squares[j].addLanded();
-							System.out.println("sent to "+ squares[j].getName() + " with chance");
+							//System.out.println("sent to "+ squares[j].getName() + " with chance");
 						}
 					}
 					}
@@ -150,7 +150,7 @@ public class Simulate {
 						
 					String chestChoice = cycledCommunityChest.get(chestInt);
 					cycledCommunityChest.remove(chestInt);
-					System.out.println("Removed "+ chestChoice + " from cycledCommunityChest, size now "+ cycledCommunityChest.size());
+					//System.out.println("Removed "+ chestChoice + " from cycledCommunityChest, size now "+ cycledCommunityChest.size());
 					if(cycledCommunityChest.size() == 0) {
 						for (int z = 0; z < communityChestCards.length; z++) {
 							cycledCommunityChest.add(communityChestCards[z]);
@@ -162,7 +162,7 @@ public class Simulate {
 						if(chestChoice.contains(squares[j].getName())) {
 							playersArray[i].setSpaceOn(j);
 							squares[j].addLanded();
-							System.out.println("sent to "+ squares[j].getName() + " with community chest");
+							//System.out.println("sent to "+ squares[j].getName() + " with community chest");
 						}
 					}
 				}
@@ -188,6 +188,23 @@ public class Simulate {
 		return squares;
 	}
 	
+	public void reset() {
+		for (int i = 0; i < playersArray.length; i++) {
+			playersArray[i].setSpaceOn(0);
+			playersArray[i].setCycles(0);
+		}
+		for (int i = 0; i < cycledChance.size(); i++) {
+			cycledChance.remove(i);
+		}for (int i = 0; i < chanceCards.length; i++) {
+			cycledChance.add(chanceCards[i]);
+		}
+		for (int z = 0; z < communityChestCards.length; z++) {
+			cycledCommunityChest.remove(z);
+		}
+		for (int z = 0; z < communityChestCards.length; z++) {
+			cycledCommunityChest.add(communityChestCards[z]);
+		}
+	}
 	
 	
 	
