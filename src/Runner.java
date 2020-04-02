@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Runner {
 	
-	public final int NUMBEROFSIMULATIONS = 100000;
+	public final int NUMBEROFSIMULATIONS = 1000000;
 	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
@@ -22,7 +22,7 @@ public class Runner {
 	Simulate[] simulations = new Simulate[NUMBEROFSIMULATIONS];
 	public final int PLAYERS = 5;
 	public final int NUMDICE = 2;
-	public final int LAPSAROUND = 10;
+	public final int LAPSAROUND = 1;
 	public int movesTotal = 0;
 	public int MOVESTOTALCALC = 0;
 public static void main(String[] args) {
@@ -52,13 +52,22 @@ public static void main(String[] args) {
 	System.out.println("Simulations done.");
 
 	for (int i = 0; i < r.squares.length; i++) {
-		averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4).multiply(new BigDecimal(100));
+		//averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4).multiply(new BigDecimal(100));
+		averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4);
 	}
 	
-	String endString = "";
+	String endString = "DECIMAL PERCENTS: \n \n";
 
 	for (int i = 0; i < r.squares.length; i++) {
-		endString+=r.squares[i].getName() + " : " + averagedPercents[i] + "%\n";
+		//endString+=r.squares[i].getName() + " : " + averagedPercents[i] + "%\n";
+		endString+=averagedPercents[i]+"\n";
+	}
+		
+	endString+="--------------------------------------------------------------------------------------\n NAMES: \n \n";
+	
+	//prints out names
+	for (int i = 0; i < r.squares.length; i++) {
+		endString+=r.squares[i].getName() + "\n";
 	}
 
 	try {
