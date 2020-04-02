@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Runner {
 	
-	public final int NUMBEROFSIMULATIONS = 7000000;
+	public final int NUMBEROFSIMULATIONS = 100000;
 	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
@@ -54,6 +54,7 @@ public static void main(String[] args) {
 	for (int i = 0; i < r.squares.length; i++) {
 		averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4).multiply(new BigDecimal(100));
 	}
+	
 	String endString = "";
 
 	for (int i = 0; i < r.squares.length; i++) {

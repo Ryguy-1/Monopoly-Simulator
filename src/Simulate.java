@@ -71,14 +71,14 @@ public class Simulate {
 		}
 	}
 	public void roll() {
-		//ADDEDTEST
-		movesTotal++;
 		boolean noJail = true;
 		for (int j = 0; j < numDice; j++) {
 			int temp = 1 + r.nextInt(numsPerDice);
 			if(doubleCounter == 3) {
 				playersArray[FPC].setSpaceOn(9);
 				squares[9].addLanded();
+				//trial
+				movesTotal++;
 				noJail = false;
 				doubleCounter = 0;
 				numRolled = 0;
@@ -110,11 +110,15 @@ public class Simulate {
 			int temp = 39-playersArray[FPC].spaceOn;
 			playersArray[FPC].setSpaceOn(numRolled-temp-1);
 			squares[playersArray[FPC].getSpaceOn()].addLanded();
+			//trial
+			movesTotal++;
 			playersArray[FPC].addCycle();
 			numRolled = 0;
 		}else {
 			playersArray[FPC].addSpaces(numRolled);
 			squares[playersArray[FPC].getSpaceOn()].addLanded();
+			//trial
+			movesTotal++;
 			numRolled = 0;
 		}
 		
@@ -123,6 +127,8 @@ public class Simulate {
 		if(squares[playersArray[FPC].getSpaceOn()].getName().contains("Go To Prison")) {
 			playersArray[FPC].setSpaceOn(9);
 			squares[9].addLanded();
+			//trial
+			movesTotal++;
 		}
 		//checking chance consequences
 		else if(squares[playersArray[FPC].getSpaceOn()].getName().contains("Chance")) {
@@ -140,12 +146,16 @@ public class Simulate {
 					if(squares[j2].getName()=="Electric Company" || squares[j2].getName()=="Water Works") {
 						playersArray[FPC].setSpaceOn(j2);
 						squares[j2].addLanded();
+						//trial
+						movesTotal++;
 						//System.out.println("sent to nearest nearest utility by chance");
 						break;
 					}else if(j2==squares.length-1) {
 						//space 11 is the electric company
 						playersArray[FPC].setSpaceOn(11);
 						squares[11].addLanded();
+						//trial
+						movesTotal++;
 						//System.out.println("sent to nearest nearest utility by chance");
 					}
 				}
@@ -154,26 +164,36 @@ public class Simulate {
 					if(squares[j2].getName()=="Reading Railroad" || squares[j2].getName()=="Pennsylvania Railroad" || squares[j2].getName()=="B.& O. Railroad" || squares[j2].getName()=="Short Line Railroad") {
 						playersArray[FPC].setSpaceOn(j2);
 						squares[j2].addLanded();
+						//trial
+						movesTotal++;
 						//System.out.println("Sent to "+ squares[j2].getName() + " with chance");
 						break;
 					}else if(j2==squares.length-1) {
 						playersArray[FPC].setSpaceOn(4);
 						squares[4].addLanded();
+						//trial
+						movesTotal++;
 						//System.out.println("Sent to Reading Railroad with Chance");
 					}
 				}
 			}else if(chanceChoice.contains("Reading Railroad")&&!chanceChoice.contains("Advance Token To The Nearest Railroad")) {
 				playersArray[FPC].setSpaceOn(4);
 				squares[4].addLanded();
+				//trial
+				movesTotal++;
 			}
 			else if (chanceChoice.contains("Go Back 3 Spaces")) {
 				playersArray[FPC].setSpaceOn(playersArray[FPC].getSpaceOn()-3);
 				squares[playersArray[FPC].getSpaceOn()-3].addLanded();
+				//trial
+				movesTotal++;
 			}else {
 			for (int j = 0; j < squares.length; j++) {	
 				if(chanceChoice.contains(squares[j].getName())) {
 					playersArray[FPC].setSpaceOn(j);
 					squares[j].addLanded();
+					//trial
+					movesTotal++;
 					//System.out.println("sent to "+ squares[j].getName() + " with chance");
 				}
 			}
@@ -194,6 +214,8 @@ public class Simulate {
 				if(chestChoice.contains(squares[j].getName())) {
 					playersArray[FPC].setSpaceOn(j);
 					squares[j].addLanded();
+					//trial
+					movesTotal++;
 					//System.out.println("sent to "+ squares[j].getName() + " with community chest");
 				}
 			}
