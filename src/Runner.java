@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Runner {
 	
-	public final int NUMBEROFSIMULATIONS = 100000;
+	public final int NUMBEROFSIMULATIONS = 1000000;
 	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
@@ -22,7 +22,7 @@ public class Runner {
 	Simulate[] simulations = new Simulate[NUMBEROFSIMULATIONS];
 	public final int PLAYERS = 5;
 	public final int NUMDICE = 2;
-	public final int LAPSAROUND = 30;
+	public final int LAPSAROUND = 10;
 	public int movesTotal = 0;
 	public int MOVESTOTALCALC = 0;
 public static void main(String[] args) {
@@ -41,7 +41,7 @@ public static void main(String[] args) {
 	//RUNS ALL SIMULATIONS
 	System.out.println("Running simulations...");
 	for (int i = 0; i < r.simulations.length; i++) {
-		//System.out.println("Running Simulation " + simulationsRun);
+		System.out.println("Running Simulation " + simulationsRun);
 		r.simulations[i] = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
 		r.simulations[i].runSimulation();
 		
