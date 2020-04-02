@@ -22,7 +22,7 @@ public class Runner {
 	Simulate[] simulations = new Simulate[NUMBEROFSIMULATIONS];
 	public final int PLAYERS = 5;
 	public final int NUMDICE = 2;
-	public final int LAPSAROUND = 1;
+	public final int LAPSAROUND = 7;
 	public int movesTotal = 0;
 	public int MOVESTOTALCALC = 0;
 public static void main(String[] args) {
