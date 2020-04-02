@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Runner {
 	
-	public final int NUMBEROFSIMULATIONS = 1000000;
+	public final int NUMBEROFSIMULATIONS = 7000000;
 	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
