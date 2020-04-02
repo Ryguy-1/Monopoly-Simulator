@@ -1,10 +1,18 @@
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+
+
 public class Runner {
 	
-	public final int NUMBEROFSIMULATIONS = 1000000;
+	public int NUMBEROFSIMULATIONS = 1000000;
 	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
@@ -19,15 +27,54 @@ public class Runner {
 			 "Go To Reading Railroad", "Go To Boardwalk", "Null", "Null", "Null"};
 	 String[] communityChestCards = {"Null", "Null", "Null", "Null", "Null", "Advance To GO", "Null", "Null", "Null", "Null", "Go To Jail", "Null", "Null", "Null", "Null", "Null"};
 	Square[] squares = new Square[namesOfSpaces.length];
-	Simulate[] simulations = new Simulate[NUMBEROFSIMULATIONS];
-	public final int PLAYERS = 4;
-	public final int NUMDICE = 2;
-	public final int LAPSAROUND = 10;
+	Simulate[] simulations;
+	public int PLAYERS = 5;
+	public int NUMDICE = 2;
+	public int LAPSAROUND = 10;
 	public int movesTotal = 0;
 	public int MOVESTOTALCALC = 0;
+	
+	
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+
+	JTextArea output;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 public static void main(String[] args) {
 	
 	Runner r = new Runner();
+
+	String playersInput = JOptionPane.showInputDialog("How many players are in your game: ");
+	String lapsInput = JOptionPane.showInputDialog("How many laps do you predict to go around: ");
+	String simsInput = JOptionPane.showInputDialog("How many simulations do you wish to run: ");
+	
+	r.PLAYERS = Integer.parseInt(playersInput);
+	r.LAPSAROUND = Integer.parseInt(lapsInput);
+	r.NUMBEROFSIMULATIONS = Integer.parseInt(simsInput);
+	
+	
+	r.simulations = new Simulate[r.NUMBEROFSIMULATIONS];
+	
+	r.start();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//initializes each space with its name, number of times landed (0 so far), and place on board (Mediterranean = 0, GO = 39)
 	for (int i = 0; i < r.namesOfSpaces.length; i++) {
 		r.squares[i] = new Square(r.namesOfSpaces[i], 0, i);
@@ -42,6 +89,7 @@ public static void main(String[] args) {
 	System.out.println("Running simulations...");
 	for (int i = 0; i < r.simulations.length; i++) {
 		System.out.println("Running Simulation " + simulationsRun);
+		r.output.setText("Simulation "+ i + " running...");
 		r.simulations[i] = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
 		r.simulations[i].runSimulation();
 		
@@ -50,7 +98,7 @@ public static void main(String[] args) {
 		simulationsRun++;
 	}
 	System.out.println("Simulations done.");
-
+	r.output.setText("Simulations Done.");
 	for (int i = 0; i < r.squares.length; i++) {
 		//averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4).multiply(new BigDecimal(100));
 		averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4);
@@ -79,6 +127,14 @@ public static void main(String[] args) {
 		e.printStackTrace();
 	}
 	
+	String excel = "";
+	
+	for (int i = 0; i < r.squares.length; i++) {
+		excel+=averagedPercents[i] + "\n";
+	}
+	
+	r.output.setText("Copy and paste these numbers into the excel spreadsheet: \n \n" + excel);
+	
 	
 	
 	
@@ -91,6 +147,28 @@ private static BigDecimal truncateDecimal(double x,int numberofDecimals)
         return new BigDecimal(String.valueOf(x)).setScale(numberofDecimals, BigDecimal.ROUND_CEILING);
     }
 }
+
+
+public void start() {
+	frame.add(panel);
+
+	frame.setVisible(true);
+	panel.setVisible(true);
+	
+	output = new JTextArea("Simulations Running...");
+	
+	
+	panel.add(output);
+	
+	frame.setSize(800,800);
+
+	
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+}
+
+
+
 
 
 }
