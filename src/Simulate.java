@@ -107,22 +107,14 @@ public class Simulate {
 	public void checkConsequences() {
 		
 		if(playersArray[FPC].getSpaceOn()+numRolled>39) {
-			//System.out.println("Player" + i + "Rolled a " + numRolled);
 			int temp = 39-playersArray[FPC].spaceOn;
 			playersArray[FPC].setSpaceOn(numRolled-temp-1);
-			//playersArray[FPC].setSpaceOn(temp);
 			squares[playersArray[FPC].getSpaceOn()].addLanded();
-			///////movesTotal+=1;
 			playersArray[FPC].addCycle();
 			numRolled = 0;
-			
-			//System.out.println("Moved GO");
 		}else {
 			playersArray[FPC].addSpaces(numRolled);
 			squares[playersArray[FPC].getSpaceOn()].addLanded();
-			///////movesTotal+=1;
-			//System.out.println("Player" + i + "Rolled a " + numRolled);
-			//System.out.println("Moved not GO");
 			numRolled = 0;
 		}
 		
@@ -131,7 +123,6 @@ public class Simulate {
 		if(squares[playersArray[FPC].getSpaceOn()].getName().contains("Go To Prison")) {
 			playersArray[FPC].setSpaceOn(9);
 			squares[9].addLanded();
-			//System.out.println("went to jail");
 		}
 		//checking chance consequences
 		else if(squares[playersArray[FPC].getSpaceOn()].getName().contains("Chance")) {
@@ -166,12 +157,16 @@ public class Simulate {
 						//System.out.println("Sent to "+ squares[j2].getName() + " with chance");
 						break;
 					}else if(j2==squares.length-1) {
-						//space 11 is the electric company
 						playersArray[FPC].setSpaceOn(4);
+						squares[4].addLanded();
 						//System.out.println("Sent to Reading Railroad with Chance");
 					}
 				}
-			}else if (chanceChoice.contains("Go Back 3 Spaces")) {
+			}else if(chanceChoice.contains("Reading Railroad")&&!chanceChoice.contains("Advance Token To The Nearest Railroad")) {
+				playersArray[FPC].setSpaceOn(4);
+				squares[4].addLanded();
+			}
+			else if (chanceChoice.contains("Go Back 3 Spaces")) {
 				playersArray[FPC].setSpaceOn(playersArray[FPC].getSpaceOn()-3);
 				squares[playersArray[FPC].getSpaceOn()-3].addLanded();
 			}else {

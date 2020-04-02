@@ -1,8 +1,8 @@
- Mediterranean Avenue : 2.4700%
+Mediterranean Avenue : 2.4700%
 Community Chest : 2.4400%
 Baltic Avenue : 2.4200%
 Income Tax : 2.5600%
-Reading Railroad : 3.1200%
+Reading Railroad : 3.2800%
 Oriental Avenue : 2.7700%
 Chance : 2.7400%
 Vermont Avenue : 2.8000%
@@ -34,7 +34,7 @@ Community Chest : 2.7800%
 Pennsylvania Avenue : 2.7900%
 Short Line Railroad : 2.6000%
 Chance : 2.5200%
-Park Place : 2.3900%
+Park Place : 2.3800%
 Luxary Tax : 2.4400%
 Boardwalk : 2.8400%
 GO : 3.4700%
