@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Runner {
 	
-	public final int NUMBEROFSIMULATIONS = 1000000;
+	public final int NUMBEROFSIMULATIONS = 100000;
 	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
@@ -22,51 +22,44 @@ public class Runner {
 	Simulate[] simulations = new Simulate[NUMBEROFSIMULATIONS];
 	public final int PLAYERS = 5;
 	public final int NUMDICE = 2;
-	public final int LAPSAROUND = 6;
+	public final int LAPSAROUND = 30;
 	public int movesTotal = 0;
 	public int MOVESTOTALCALC = 0;
 public static void main(String[] args) {
 	
 	Runner r = new Runner();
-	//System.out.println(r.namesOfSpaces.length);
 	//initializes each space with its name, number of times landed (0 so far), and place on board (Mediterranean = 0, GO = 39)
 	for (int i = 0; i < r.namesOfSpaces.length; i++) {
 		r.squares[i] = new Square(r.namesOfSpaces[i], 0, i);
 	}
-//	System.out.println(r.squares[39].getName());
-//	System.out.println(r.squares[39].getPlaceOnBoard());
-//	System.out.println("tried to run");
-	
-	
-//	
 
-//	int[][][] percentsTotalAll = new int[r.simulations.length][r.squares.length][r.simulations.length];
 	int simulationsRun = 0;
 	
 	BigDecimal[] averagedPercents = new BigDecimal[r.squares.length];
-	int[] movesTotal = new int[r.simulations.length];
-	int[] timesPerSquareTotal = new int[r.squares.length];
-	Square[][] arrayOfSquareArrays = new Square[r.simulations.length][r.squares.length];
+	
 	
 	//RUNS ALL SIMULATIONS
+	System.out.println("Running simulations...");
 	for (int i = 0; i < r.simulations.length; i++) {
-		System.out.println("Running Simulation " + simulationsRun);
+		//System.out.println("Running Simulation " + simulationsRun);
 		r.simulations[i] = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
 		r.simulations[i].runSimulation();
 		
 		r.MOVESTOTALCALC += r.simulations[i].getMovesTotal();
-		//arrayOfSquareArrays[i] = r.simulations[i].getSquareArray();
 		
 		simulationsRun++;
 	}
+	System.out.println("Simulations done.");
 
 	for (int i = 0; i < r.squares.length; i++) {
 		averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4).multiply(new BigDecimal(100));
 	}
 	String endString = "";
+
 	for (int i = 0; i < r.squares.length; i++) {
 		endString+=r.squares[i].getName() + " : " + averagedPercents[i] + "%\n";
 	}
+
 	try {
 		FileWriter fw = new FileWriter("src/results.txt");
 		fw.write(endString);
