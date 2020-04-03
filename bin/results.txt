@@ -1,45 +1,45 @@
 DECIMAL PERCENTS: 
  
-Mediterranean Avenue : 0.0194%
-Community Chest : 0.0193%
-Baltic Avenue : 0.0191%
-Income Tax : 0.0204%
-Reading Railroad : 0.0261%
-Oriental Avenue : 0.0222%
-Chance : 0.0221%
-Vermont Avenue : 0.0226%
-Connecticut Avenue : 0.0219%
-Jail : 0.0581%
-St. Charles Place : 0.0270%
-Electric Company : 0.0251%
-States Avenue : 0.0234%
-Virginia Avenue : 0.0240%
-Pennsylvania Railroad : 0.0277%
-St.James Place : 0.0286%
-Community Chest : 0.0278%
-Tennessee Avenue : 0.0268%
-New York Avenue : 0.0279%
-Free Parking : 0.0270%
-Kentucky Avenue : 0.0275%
-Chance : 0.0263%
-Indiana Avenue : 0.0257%
-Illinois Avenue : 0.0300%
-B.& O. Railroad : 0.0270%
-Atlantic Avenue : 0.0252%
-Ventnor Avenue : 0.0245%
-Water Works : 0.0258%
-Marvin Gardens : 0.0243%
-Go To Prison : 0.0259%
-Pacific Avenue : 0.0232%
-North Carolina Avenue : 0.0233%
-Community Chest : 0.0220%
-Pennsylvania Avenue : 0.0220%
-Short Line Railroad : 0.0206%
-Chance : 0.0199%
-Park Place : 0.0188%
-Luxary Tax : 0.0192%
-Boardwalk : 0.0224%
-GO : 0.0274%
+0.0170
+0.0144
+0.0236
+0.0118
+0.0223
+0.0328
+0.0223
+0.0249
+0.0183
+0.0696
+0.0223
+0.0354
+0.0197
+0.0315
+0.0275
+0.0236
+0.0407
+0.0275
+0.0341
+0.0170
+0.0289
+0.0275
+0.0289
+0.0354
+0.0223
+0.0236
+0.0249
+0.0289
+0.0210
+0.0289
+0.0223
+0.0236
+0.0223
+0.0249
+0.0078
+0.0197
+0.0065
+0.0118
+0.0249
+0.0275
 --------------------------------------------------------------------------------------
  NAMES: 
  

@@ -14,6 +14,8 @@ public class Runner {
 	
 	public int NUMBEROFSIMULATIONS = 1000000;
 	
+	public String link = "https://1drv.ms/x/s!Ap8aKWXu4H4R5V9fpGcgSpYmp1X8?e=wjsd1M";
+	
 	 public final int numsPerDice = 6;
 	 String[] namesOfSpaces = {"Mediterranean Avenue", "Community Chest", "Baltic Avenue", "Income Tax", "Reading Railroad", 
 			"Oriental Avenue", "Chance", "Vermont Avenue", "Connecticut Avenue", "Jail", "St. Charles Place", 
@@ -133,7 +135,7 @@ public static void main(String[] args) {
 		excel+=averagedPercents[i] + "\n";
 	}
 	
-	r.output.setText("Copy and paste these numbers into the excel spreadsheet: \n \n" + excel);
+	r.output.setText("Copy and paste these numbers into the excel spreadsheet: \n \n" + r.link + "\n \n"+ excel);
 	
 	
 	
