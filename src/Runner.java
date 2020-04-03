@@ -114,9 +114,9 @@ public static void main(String[] args) {
 	endString+="--------------------------------------------------------------------------------------\n NAMES: \n \n";
 	
 	//prints out names
-	for (int i = 0; i < r.squares.length; i++) {
-		endString+=r.squares[i].getName() + "\n";
-	}
+//	for (int i = 0; i < r.squares.length; i++) {
+//		endString+=r.squares[i].getName() + "\n";
+//	}
 
 	try {
 		FileWriter fw = new FileWriter("src/results.txt");
