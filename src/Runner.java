@@ -141,7 +141,7 @@ public static void main(String[] args) {
 	
 	
 }
-@SuppressWarnings("deprecation")
+
 private static BigDecimal truncateDecimal(double x,int numberofDecimals)
 {
     if ( x > 0) {
