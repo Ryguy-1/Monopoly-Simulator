@@ -1,6 +1,6 @@
 
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.FileWriter;
+//import java.io.IOException;
 import java.math.BigDecimal;
 
 import javax.swing.JFrame;
@@ -82,7 +82,7 @@ public static void main(String[] args) {
 		r.squares[i] = new Square(r.namesOfSpaces[i], 0, i);
 	}
 
-	int simulationsRun = 0;
+//	int simulationsRun = 0;
 	
 	BigDecimal[] averagedPercents = new BigDecimal[r.squares.length];
 	
@@ -97,7 +97,7 @@ public static void main(String[] args) {
 		
 		r.MOVESTOTALCALC += r.simulations[i].getMovesTotal();
 		
-		simulationsRun++;
+	//	simulationsRun++;
 	}
 	System.out.println("Simulations done.");
 	r.output.setText("Simulations Done.");
