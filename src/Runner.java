@@ -90,7 +90,7 @@ public static void main(String[] args) {
 	//RUNS ALL SIMULATIONS
 	System.out.println("Running simulations...");
 	for (int i = 0; i < r.simulations.length; i++) {
-		System.out.println("Running Simulation " + simulationsRun);
+		//System.out.println("Running Simulation " + simulationsRun);
 		r.output.setText("Simulation "+ i + " running...");
 		r.simulations[i] = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
 		r.simulations[i].runSimulation();
@@ -106,28 +106,28 @@ public static void main(String[] args) {
 		averagedPercents[i] = truncateDecimal((double)r.squares[i].getTimesLanded()/(double)r.MOVESTOTALCALC, 4);
 	}
 	
-	String endString = "DECIMAL PERCENTS: \n \n";
+//	String endString = "DECIMAL PERCENTS: \n \n";
 
-	for (int i = 0; i < r.squares.length; i++) {
-		//endString+=r.squares[i].getName() + " : " + averagedPercents[i] + "%\n";
-		endString+=averagedPercents[i]+"\n";
-	}
+//	for (int i = 0; i < r.squares.length; i++) {
+//		//endString+=r.squares[i].getName() + " : " + averagedPercents[i] + "%\n";
+//		endString+=averagedPercents[i]+"\n";
+//	}
 		
-	endString+="--------------------------------------------------------------------------------------\n NAMES: \n \n";
+	//endString+="--------------------------------------------------------------------------------------\n NAMES: \n \n";
 	
 	//prints out names
 //	for (int i = 0; i < r.squares.length; i++) {
 //		endString+=r.squares[i].getName() + "\n";
 //	}
 
-	try {
-		FileWriter fw = new FileWriter("src/results.txt");
-		fw.write(endString);
-		
-		fw.close();
-	} 	catch (IOException e) {
-		e.printStackTrace();
-	}
+//	try {
+//		FileWriter fw = new FileWriter("src/results.txt");
+//		fw.write(endString);
+//		
+//		fw.close();
+//	} 	catch (IOException e) {
+//		e.printStackTrace();
+//	}
 	
 	String excel = "";
 	
