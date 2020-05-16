@@ -3,15 +3,28 @@
 //import java.io.IOException;
 import java.math.BigDecimal;
 
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 
 
-public class Runner {
+@SuppressWarnings("deprecation")
+public class Runner extends Applet{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -245696510215218336L;
+
 	public int NUMBEROFSIMULATIONS = 1000000;
 	
 	public String link = "https://1drv.ms/x/s!Ap8aKWXu4H4R5V9fpGcgSpYmp1X8?e=wjsd1M";
@@ -42,8 +55,12 @@ public class Runner {
 
 	JTextArea output;
 	
+	JLabel gif = new JLabel();
 	
 	
+	Font font1 = new Font("SansSerif", Font.BOLD, 30);
+	
+	Font font2 = new Font("SansSerif", Font.BOLD, 14);
 	
 	
 	
@@ -95,10 +112,21 @@ public static void main(String[] args) {
 		r.simulations[i] = new Simulate(r.squares, r.PLAYERS, r.NUMDICE, r.numsPerDice, r.chanceCards, r.communityChestCards, r.movesTotal, r.LAPSAROUND);
 		r.simulations[i].runSimulation();
 		
+		//
+		
+	
+		
+		//
+
 		r.MOVESTOTALCALC += r.simulations[i].getMovesTotal();
 		
 	//	simulationsRun++;
 	}
+		r.gif.setVisible(false);
+		r.output.setFont(r.font2);
+	
+	
+	
 	System.out.println("Simulations done.");
 	r.output.setText("Simulations Done.");
 	for (int i = 0; i < r.squares.length; i++) {
@@ -161,9 +189,25 @@ public void start() {
 	output = new JTextArea("Simulations Running...");
 	
 	
-	panel.add(output);
 	
-	frame.setSize(800,800);
+	
+	panel.add(output);
+	panel.setBackground(Color.DARK_GRAY);
+	
+	output.setFont(font1);
+
+	
+	panel.add(gif);
+	Icon imgIcon = new ImageIcon("src/gifmonopoly.gif");
+	gif = new JLabel(imgIcon);
+//	gif.setBounds(300, 300, 300, 300); // for example, you can use your own values
+	gif.setVisible(true);
+	panel.add(gif);
+	
+	
+	
+	
+	frame.setSize(1000, 900);
 
 	
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
